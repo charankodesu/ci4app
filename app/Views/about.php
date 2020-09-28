@@ -1,4 +1,22 @@
+<?php  
+function get_CURL($url)
+{
+	$curl= curl_init();
+	curl_setopt($curl, CURLOPT_URL, $url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	$result = curl_exec($curl);
+	curl_close($curl);
 
+	return json_decode($result, true);
+}
+
+$result = get_CURL('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=UCtG41d75lnXxdT8Z2_x3dYA&key=AIzaSyAZqmHI48ZR9A8hqk7cAZrcyDMtUhCO_yc');
+
+$youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url'];
+$channelName = $result['items'][0]['snippet']['title'];
+$subscriber = $result['items'][0]['statistics']['subscriberCount'];
+// KEY = AIzaSyAZqmHI48ZR9A8hqk7cAZrcyDMtUhCO_yc
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,84 +37,70 @@
 		}
 		#sticky-footer {
 			flex-shrink: 0;
-			
+
+		}
+		#utama {
+			height: 850px;
 		}
 	</style>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-		<div class="container">
-			<a class="navbar-brand" href="#">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Services</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<?= $this->include('layout/navbar') ?>
 
 	<!-- Page Content -->
 	<div class="container">
 		<div class="card border-0 shadow my-5">
 			<!-- Page Content -->
-			<div class="container">
+			<div class="container" id="utama">
 
 				<!-- Page Heading -->
-				<h1 class="my-4">Page Heading
-					<small>Secondary Text</small>
-				</h1>
+				<h1 class="my-4 mx-4">About us</h1>
+				
+				<section class="social" id="social">
+					<div class="container">
+						<div class="row pl-2 pt-4 mb-4">
+							<div class="col text-center">
+								<h4>
+									Social Media
+								</h4>
+							</div>
+						</div>
+													
+						<div class="row justify-content-center">
+							<!-- Youtube -->
+							<div class="col-md-5">
+								<div class="row">
+									<div class="col-md-4">
+										<img src="<?= $youtubeProfilePic ;?>" width="200" class="rounded-circle img-thumbnail">
+									</div>
+									<div class="col-md-8">
+										<h5><?= $channelName; ?></h5>
+										<p><?= $subscriber; ?> Subscribers.</p>
+									</div>
+								</div>
+							</div>
+							<!-- Instagram -->
+							<div class="col-md-5">
+							<div class="row">
+									<div class="col-md-4">
+										<img src="/" width="200" class="rounded-circle img-thumbnail">
+									</div>
+									<div class="col-md-8">
+										<h5> Haafidz </h5>
+										<p>1000</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 
-				<!-- Pagination -->
-				<ul class="pagination justify-content-center">
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-						</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">1</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-							<span class="sr-only">Next</span>
-						</a>
-					</li>
-				</ul>
 
 			</div>
 			<!-- /.container -->
 		</div>
 	</div>
 
-	<footer id="sticky-footer" class="py-4 bg-white text-black-50 ">
-		<div class="container text-center font-weight-bold">
-			<p>Copyright &copy; Your Website 2020</p>
-		</div>
-	</footer>
+	<?= $this->include('layout/footer') ?>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
