@@ -14,9 +14,9 @@ class Home extends BaseController
 		echo view("about");
 	}
     
-    public function contact()
+    public function bio()
 	{
-		echo view("contact");
+		echo view("bio");
 	}
     
     public function faqs()
