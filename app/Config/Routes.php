@@ -33,7 +33,7 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::about');
 $routes->get('/bio', 'Home::bio');
-
+$routes->get('/anime', 'Home::anime');
 
 /**
  * --------------------------------------------------------------------

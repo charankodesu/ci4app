@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/bio.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -118,6 +118,16 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
+            <div class="justify-content-center">
+                <ul>
+                    <div>
+                        <li>ci4 app</li>
+                    </div>
+                    <li>Anime React</li>
+                    <li>Portofolio</li>
+                    <li>rimururepair.xyz</li>
+                </ul>
+            </div>
             </div>
         </section>
 
